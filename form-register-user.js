@@ -91,9 +91,9 @@ function createCity() {
         console.log(typeof prov);
         for (i = 0; i < Comuni.regioni.length; i++) {
             for (y = 0; y < Comuni.regioni[i].province.length; y++) {
-                console.log(typeof Comuni.regioni[i].province[y].code);
-                if (Comuni.regioni[i].province[y].code == prov) {
-                    for (j = 0; j < Comuni.regioni[i].province[y].comuni.length; j++) {
+                 var code = Comuni.regioni[i].province[y].code;
+                 for (j = 0; j < Comuni.regioni[i].province[y].comuni.length; j++) {
+                     if (code == prov) {
                         for (h = 0; h < Comuni.regioni[i].province[y].comuni[j].length; h++) {
                             var select = document.getElementById("citta");
                             var option = document.createElement("option");
