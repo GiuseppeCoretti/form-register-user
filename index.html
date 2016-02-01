@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Form</title>
+	<meta charset="utf-8" />
+    <script src="form-register-user.js"></script>
+    <style>
+        form{
+            width: 300px;
+            height: 500px;
+            margin: 0 auto;
+            padding: 50px;
+            border: solid 1px;
+        }
+        form label, form section#giorno label, form section#giorno span{
+            display: block;
+            margin-top: 10px;
+        }
+        form section#giorno label{
+            float: left;
+            margin-left: 10px;
+        }
+        form section#indirizzo{
+            display: inline-block;
+            margin-top: 10px;
+        }
+        form section#indirizzo label{
+            display: block;
+            margin-top: 10px;
+        }
+        form section#indirizzo select#provincia, form section#indirizzo select#citta{
+            min-width: 200px;
+        }
+        #txtNome, #txtCognome{
+            display: block;
+            margin-top: 10px;
+        }
+        button{
+            width: 100px;
+            height: 40px;
+        }
+        #btnMostra{
+            display: block;
+            position: relative;
+            top: 5%;
+            left: 75%;
+        }
+        #btnMostra2{
+            display: block;
+            position: relative;
+            top: 7%;
+            left: 75%;
+        }
+    </style>
+</head>
+<body>
+    <form name="myform" id="frmAnagrafica">
+        <label>
+            Nome:*
+            <input type="text" id="txtNome" placeholder="Nome" />
+        </label>
+        <label>
+            Cognome:*
+            <input type="text" id="txtCognome" placeholder="Cognome" />
+        </label>
+        <section id="giorno" onchange="disable()">
+            <span>Data di nascita:*</span>
+            <label>
+                <span>Giorno</span>
+                <select name="Giorno" id="cmbGiorno"></select>
+            </label>
+            <label>
+                <span>Mese</span>
+                <select name="Mese" id="cmbMese"></select>
+            </label>
+            <label>
+                <span>Anno</span>
+                <select name="Anno" id="cmbAnno"></select>
+            </label>
+        </section>
+        <section id="indirizzo">
+            <span>Indirizzo:</span>
+            <label>
+                Via:*
+            </label>
+            <input type="text" name="via" id="via" />
+            <label>
+                Provincia:*
+            </label>
+            <select name="provincia" id="provincia" onchange="createCity()"></select>
+            <label>
+                Città:*
+            </label>
+            <select name="citta" id="citta" ></select>
+        </section>
+        <label>
+            Codice Fiscale:
+        </label>
+        <input type="text" name="codFisc" id="codFisc" />
+        <button type="submit" id="btnMostra" onclick="anagaf()">Aggiungi alla lista</button>
+        <button type="submit" id="btnMostra2" onclick="eta()" disabled="disabled">Stampa lista</button>
+        <script>createOptionDay()</script>
+        <script>createOptionMonth()</script>
+        <script>createOptionYear()</script>
+        <script>createProv()</script>
+        <script>createCity()</script>
+    </form>
+</body>
+</html>
