@@ -91,18 +91,17 @@ function createCity() {
         console.log(typeof prov);
         for (i = 0; i < Comuni.regioni.length; i++) {
             for (y = 0; y < Comuni.regioni[i].province.length; y++) {
-                for (j = 0; j < Comuni.regioni[i].province[y].comuni.length; j++) {
-                    var code = Comuni.regioni[i].province[y].code;
-                     if (code == prov) {
-                        for (h = 0; h < Comuni.regioni[i].province[y].comuni[j].length; h++) {
+               // for (j = 0; j < Comuni.regioni[i].province[y].comuni.length; j++) {
+                    if (Comuni.regioni[i].province[y] == prov) {
+                        for (h = 0; h < Comuni.regioni[i].province[y].length; h++) {
                             var select = document.getElementById("citta");
                             var option = document.createElement("option");
-                            option.setAttribute("value", Comuni.regioni[i].province[y].comuni[j].cap.value);
-                            option.innerHTML = Comuni.regioni[i].province[y].comuni[j].nome.value;
+                            option.setAttribute("value", Comuni.regioni[i].province[y].comuni[h].cap);
+                            option.innerHTML = Comuni.regioni[i].province[y].comuni[h].nome;
                             select.appendChild(option);
                         }
                     }
-                }
+               // }
             }
         }
         console.log(prov);
