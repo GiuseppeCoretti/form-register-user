@@ -101,6 +101,7 @@ function createCity() {
                         var select = document.getElementById("citta");
                         var option = document.createElement("option");
                         option.setAttribute("value", Comuni.regioni[i].province[y].comuni[h].cap);
+                        option.setAttribute("name", Comuni.regioni[i].province[y].comuni[h].code);
                         option.innerHTML = Comuni.regioni[i].province[y].comuni[h].nome;
                         select.appendChild(option);
                     }
