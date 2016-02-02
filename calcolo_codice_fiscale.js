@@ -126,3 +126,18 @@ CFisc.calcola_codice=function(nome,cognome,sesso,giorno,mese,anno,luogo)
 
   return codice
 }
+
+function formsubmit(form)
+{
+  var sesso=form.sesso[0].checked?'M':'F'
+  var data=form.data.value
+  data=data.match(/^\s*(\d+).(\d+).(\d+)/)
+  var codice=CFisc.calcola_codice(
+    form.nome.value,
+    form.cognome.value,
+    sesso,
+    data[1],data[2],data[3],
+    form.luogo.value
+    )
+  form.codice.value=codice
+}
