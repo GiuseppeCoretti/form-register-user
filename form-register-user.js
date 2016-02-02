@@ -51,15 +51,15 @@ function loadProv(callback) {
 }
 
 function loadCity(callback) {
-    var xobj = new XMLHttpRequest();
-    xobj.overrideMimeType("application/json");
-    xobj.open('GET', 'italia_comuni.json', true);
-    xobj.onreadystatechange = function () {
-        if (xobj.readyState == 4 && xobj.status == "200") {
-            callback(xobj.responseText);
+    var xobj2 = new XMLHttpRequest();
+    xobj2.overrideMimeType("application/json");
+    xobj2.open('GET', 'italia_comuni.json', true);
+    xobj2.onreadystatechange = function () {
+        if (xobj2.readyState == 4 && xobj2.status == "200") {
+            callback(xobj2.responseText);
         }
     };
-    xobj.send(null);
+    xobj2.send(null);
 }
 
 function createProv() {
@@ -85,26 +85,28 @@ function createProv() {
 }
 
 function createCity() {
-    loadProv(function (response) {
+    loadCity(function (response) {
         var Comuni = JSON.parse(response);
         var prov = document.getElementById("provincia").value;
-        console.log(typeof prov);
+        var citta = document.getElementById("citta");
         for (i = 0; i < Comuni.regioni.length; i++) {
             for (y = 0; y < Comuni.regioni[i].province.length; y++) {
-               // for (j = 0; j < Comuni.regioni[i].province[y].comuni.length; j++) {
-                    if (Comuni.regioni[i].province[y] == prov) {
-                        for (h = 0; h < Comuni.regioni[i].province[y].length; h++) {
-                            var select = document.getElementById("citta");
-                            var option = document.createElement("option");
-                            option.setAttribute("value", Comuni.regioni[i].province[y].comuni[h].cap);
-                            option.innerHTML = Comuni.regioni[i].province[y].comuni[h].nome;
-                            select.appendChild(option);
-                        }
+                var cit = Comuni.regioni[i].province[y].code;
+                if (cit == prov) {
+                    while (citta.length > 0) {
+                        citta.remove(citta.length - 1);
                     }
-               // }
+                    var x = document.getElementById("mySelect");
+                    for (h = 0; h < Comuni.regioni[i].province[y].comuni.length; h++) {
+                        var select = document.getElementById("citta");
+                        var option = document.createElement("option");
+                        option.setAttribute("value", Comuni.regioni[i].province[y].comuni[h].cap);
+                        option.innerHTML = Comuni.regioni[i].province[y].comuni[h].nome;
+                        select.appendChild(option);
+                    }
+                }
             }
         }
-        console.log(prov);
     });
 }
 
