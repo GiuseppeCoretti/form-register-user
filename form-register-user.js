@@ -84,6 +84,18 @@ function createProv() {
     });
 }
 
+//var jqxhr = $.getJSON("js/italia.json", function (italia) {
+//    var array = new Array();
+//    for (i = 0; i < italia.regioni.length; i++) {
+//        for (l = 0; l < italia.regioni[i].capoluoghi.length; l++) {
+//            var capoluogo = italia.regioni[i].capoluoghi[l];
+//            var provincia = italia.regioni[i].province[l];
+//            array.push([provincia, capoluogo]);
+//        }
+//    }
+//    console.log(array);
+//});
+
 function createCity() {
     loadCity(function (response) {
         var Comuni = JSON.parse(response);
