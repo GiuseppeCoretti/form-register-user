@@ -98,12 +98,11 @@ function createCity() {
                     }
                     var x = document.getElementById("mySelect");
                     for (h = 0; h < Comuni.regioni[i].province[y].comuni.length; h++) {
-                        var select = document.getElementById("citta");
                         var option = document.createElement("option");
                         option.setAttribute("value", Comuni.regioni[i].province[y].comuni[h].cap);
                         option.setAttribute("name", Comuni.regioni[i].province[y].comuni[h].code);
                         option.innerHTML = Comuni.regioni[i].province[y].comuni[h].nome;
-                        select.appendChild(option);
+                        citta.appendChild(option);
                     }
                 }
             }
@@ -174,12 +173,6 @@ function anagaf() {
     }
     else if (via == "") {
         alert("Non hai digitato la via");
-    }
-    else if (provincia == "") {
-        alert("Non hai digitato la provincia");
-    }
-    else if (citta == "") {
-        alert("Non hai digitato la città");
     }
     else if (control(txtNome) == false) {
         alert("Hai digitato caratteri non consentiti nel nome.")
