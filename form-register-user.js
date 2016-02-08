@@ -81,7 +81,7 @@ function createProv() {
             option.innerHTML = arrayProvince[i][1];
             select.appendChild(option);
         }
-    });
+    });//aggiungere parametro prima del punto e virgola
 }
 
 //var jqxhr = $.getJSON("js/italia.json", function (italia) {
