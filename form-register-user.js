@@ -38,10 +38,10 @@ function createOptionYear() {
     }
 }
 
-function loadProv(callback) {
+function loadJson(file, callback) {
     var xobj = new XMLHttpRequest();
     xobj.overrideMimeType("application/json");
-    xobj.open('GET', 'italia.json', true);
+    xobj.open('GET', file, true);
     xobj.onreadystatechange = function () {
         if (xobj.readyState == 4 && xobj.status == "200") {
             callback(xobj.responseText);
@@ -50,20 +50,9 @@ function loadProv(callback) {
     xobj.send(null);  
 }
 
-function loadCity(callback) {
-    var xobj2 = new XMLHttpRequest();
-    xobj2.overrideMimeType("application/json");
-    xobj2.open('GET', 'italia_comuni.json', true);
-    xobj2.onreadystatechange = function () {
-        if (xobj2.readyState == 4 && xobj2.status == "200") {
-            callback(xobj2.responseText);
-        }
-    };
-    xobj2.send(null);
-}
-
 function createProv() {
-    loadProv(function (response) {
+    data = "italia.json";
+    loadJson(data, function (response) {
         var Provincia = JSON.parse(response);
         var arrayProvince = new Array();
         for (i=0; i<Provincia.regioni.length; i++){
@@ -81,23 +70,12 @@ function createProv() {
             option.innerHTML = arrayProvince[i][1];
             select.appendChild(option);
         }
-    });//aggiungere parametro prima del punto e virgola
+    });
 }
 
-//var jqxhr = $.getJSON("js/italia.json", function (italia) {
-//    var array = new Array();
-//    for (i = 0; i < italia.regioni.length; i++) {
-//        for (l = 0; l < italia.regioni[i].capoluoghi.length; l++) {
-//            var capoluogo = italia.regioni[i].capoluoghi[l];
-//            var provincia = italia.regioni[i].province[l];
-//            array.push([provincia, capoluogo]);
-//        }
-//    }
-//    console.log(array);
-//});
-
 function createCity() {
-    loadCity(function (response) {
+    data = "italia_comuni.json";
+    loadJson(data, function (response) {
         var Comuni = JSON.parse(response);
         var prov = document.getElementById("provincia").value;
         var citta = document.getElementById("citta");
