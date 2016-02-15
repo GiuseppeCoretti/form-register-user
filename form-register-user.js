@@ -55,6 +55,7 @@ function createProv() {
     loadJson(data, function (response) {
         var Provincia = JSON.parse(response);
         var arrayProvince = new Array();
+        var i;
         for (i=0; i<Provincia.regioni.length; i++){
             for (l = 0; l < Provincia.regioni[i].capoluoghi.length; l++){
                 var capoluogo = Provincia.regioni[i].capoluoghi[l];
@@ -79,6 +80,7 @@ function createCity() {
         var Comuni = JSON.parse(response);
         var prov = document.getElementById("provincia").value;
         var citta = document.getElementById("citta");
+        var i, y, h;
         for (i = 0; i < Comuni.regioni.length; i++) {
             for (y = 0; y < Comuni.regioni[i].province.length; y++) {
                 var cit = Comuni.regioni[i].province[y].code;
@@ -110,6 +112,7 @@ function disable() {
     var anno = parseInt(document.getElementById("cmbAnno").value);
     var thirty = new Array(3, 5, 8, 10);
     var giorno = document.getElementsByTagName("option");
+    var i;
     if (thirty.indexOf(mese) != -1) {
         var giorno31 = optionAttr(giorno, 30, "disabled", "disabled");
     }
